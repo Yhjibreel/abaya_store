@@ -1,0 +1,288 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.cart-link {
+    color: white;
+    text-decoration: none;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    text-align: center;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.price {
+    color: #e44d26;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+/* Add this to your existing styles.css or create a new checkout.css */
+
+/* Checkout Page Specific Styles */
+.checkout-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    gap: 2rem;
+}
+
+.cart-items {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.cart-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+    width: 350px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cart-item h3 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+}
+
+.total {
+    text-align: right;
+    padding: 2rem 0;
+    font-size: 1.4rem;
+    color: #e44d26;
+}
+
+.checkout-container form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.checkout-container form h2 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.checkout-container input,
+.checkout-container textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.checkout-container input:focus,
+.checkout-container textarea:focus {
+    outline: none;
+    border-color: #666;
+    box-shadow: 0 0 0 2px rgba(102,102,102,0.2);
+}
+
+.checkout-container button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    background-color: #28a745;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-container button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.empty-cart-message {
+    text-align: center;
+    padding: 4rem 0;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .checkout-container {
+        grid-template-columns: 2fr 1fr;
+    }
+    
+    .checkout-container form {
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+    }
+}
+
+@media (max-width: 767px) {
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cart-item img {
+        width: 150px;
+        height: 180px;
+    }
+}
+
+/* Thank You Page Styles */
+.thank-you {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.thank-you a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.thank-you a:hover {
+    background-color: #444;
+}
+
+
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+header h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+/* Cart Link */
+.cart-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    margin-right: 20px;
+}
+
+.cart-link:hover {
+    text-decoration: underline;
+}
+
+/* Navigation (Categories) */
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Logout/Login Link */
+.logout-link, .login-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    margin-left: 20px;
+}
+
+.logout-link:hover, .login-link:hover {
+    text-decoration: underline;
+}
+
+/* Make the header responsive */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+}
