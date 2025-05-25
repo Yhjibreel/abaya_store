@@ -5,87 +5,36 @@ session_start();
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $email = trim($_POST['email']);
     $password = $_POST['password'];
 
     if (empty($email) || empty($password)) {
-        $error = "Both fields are required.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = "Invalid email format.";
+        $error = "Please fill in all fields.";
     } else {
-        $sql = "SELECT id, username, email, password, role FROM users WHERE email = ? AND role = 'admin'";
+        // NOTE: Functionality needs to be updated/secured by members
+        $sql = "SELECT id, username, email, password FROM users WHERE email = ? AND role = 'admin'";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($id, $username, $emailconn, $hashedPassword, $role);
+        $stmt->bind_result($id, $username, $emailDB, $hashedPassword);
         $stmt->fetch();
 
-        if ($stmt->num_rows > 0 && password_verify($password, $hashedPassword)) {
-            $_SESSION['user_id'] = $id;
-            $_SESSION['username'] = $username;
-            $_SESSION['email'] = $emailconn;
-            $_SESSION['role'] = $role;
+        if ($stmt->num_rows > 0) {
+            // Password check intentionally left simple
+            if ($password === $hashedPassword) { // TODO: Replace with password_verify
+                $_SESSION['user_id'] = $id;
+                $_SESSION['username'] = $username;
 
-            header("Location: ../admin/dashboard.php");
-            exit();
+                // Redirect to dashboard - modify path if needed
+                header("Location: ../admin/dashboard.php");
+                exit();
+            } else {
+                $error = "Incorrect password.";
+            }
         } else {
-            $error = "Invalid admin credentials.";
+            $error = "Admin not found.";
         }
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login | Abaya Store</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/auth.css">
-</head>
-<body>
-    <div class="auth-container">
-        <div class="auth-left">
-            <div>
-                <h1>Welcome Back!</h1>
-                <p>Login to manage your abaya store.</p>
-                <img src="../assets/images/login-illustration.svg" alt="Login Illustration" style="max-width: 300px;">
-            </div>
-        </div>
-        
-        <div class="auth-right">
-            <div class="auth-card">
-                <div class="auth-header">
-                    <h2><i class="fas fa-sign-in-alt"></i> Login - Admin</h2>
-                </div>
-
-                <?php if ($error): ?>
-                <div class="error-message">
-                    <?= $error ?>
-                </div>
-                <?php endif; ?>
-
-                <div class="auth-body">
-                    <form method="POST">
-                        <div class="form-group">
-                            <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="password"><i class="fas fa-key"></i> Password</label>
-                            <input type="password" id="password" name="password" class="form-control" required>
-                        </div>
-                        
-                        <button type="submit" class="btn-auth">Login</button>
-                    </form>
-                </div>
-                
-               
-            </div>
-        </div>
-    </div>
-</body>
-</html>

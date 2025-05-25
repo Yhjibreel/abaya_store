@@ -24,17 +24,13 @@ echo "Welcome, " . $_SESSION['username'];
 <header>
     <h1>Luxury Abayas</h1>
     
-    <!-- Cart Link -->
-    <a href="checkout.php" class="cart-link">
-        Cart (<?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?>)
-    </a>
-
+   
     
     <!-- Logout Link (Only if the user is logged in) -->
     <?php if (isset($_SESSION['username'])): ?>
-        <a href="../auth/logout.php" class="logout-link">Logout</a>
+        <a href="../authlogout.php" class="logout-link">Logout</a>
     <?php else: ?>
-        <a href="login.php" class="login-link">Login</a>
+        <a href="login.php" class="login-link">Loging</a>
     <?php endif; ?>
 </header>
 
