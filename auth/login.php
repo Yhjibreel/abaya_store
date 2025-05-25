@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<!-- Use the same HTML but change title to "User Login" and heading texts -->
+<!-- Used same HTML but change title to "User Login" and heading texts -->
 
 
 <!DOCTYPE html>
