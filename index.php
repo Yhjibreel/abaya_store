@@ -53,8 +53,17 @@ echo "Welcome, " . $_SESSION['username'];
         <?php endwhile; ?>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Abaya Shop. All rights reserved.</p>
-    </footer>
+  <footer style="background-color: #222; color: #fff; padding: 20px 0; text-align: center; font-size: 14px;">
+    <div style="max-width: 1200px; margin: auto;">
+        <p style="margin: 5px 0;">&copy; 2025 <strong>Abaya Shop</strong>. All rights reserved.</p>
+        <p style="margin: 5px 0;">
+            <a href="../index.php" style="color: #f0c040; text-decoration: none; margin: 0 10px;">Home</a> |
+            <a href="../about.php" style="color: #f0c040; text-decoration: none; margin: 0 10px;">About</a> |
+            <a href="../contact.php" style="color: #f0c040; text-decoration: none; margin: 0 10px;">Contact</a>
+        </p>
+        <p style="margin: 5px 0;">Crafted with 💛 by the Abaya Shop Team</p>
+    </div>
+</footer>
+
 </body>
 </html>
