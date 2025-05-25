@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="auth-left">
             <div>
                 <h1>Join Us!</h1>
-                <p>Create an account to manage your abaya store.</p>
+                <p>Create an account to manage your own abaya store..</p>
                 <img src="../assets/images/register-illustration.svg" alt="Register Illustration" style="max-width: 300px;">
             </div>
         </div>
