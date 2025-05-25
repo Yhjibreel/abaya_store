@@ -9,8 +9,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
+    $role = 'user'; // Getting the role from the form
 
-  
+    // Validate inputs
+    if (empty($username) || empty($email) || empty($password)) {
+        $error = "All fields are required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Invalid email format.";
+    } else {
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        // ✅ Add the role to the SQL query
+        $sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param("ssss", $username, $email, $hashedPassword, $role); // Bind role to the query
+            if ($stmt->execute()) {
+                header("Location: login.php?signup=success");
+                exit();
+            } else {
+                $error = "Signup failed. Please try again.";
+            }
+        } else {
+            $error = "Database error: " . $conn->error;
+        }
+    }
 }
 ?>
 
@@ -28,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="auth-left">
             <div>
                 <h1>Join Us!</h1>
-                <p>Create an account to manage your own abaya store.</p>
+                <p>Create an account to manage your abaya store.</p>
                 <img src="../assets/images/register-illustration.svg" alt="Register Illustration" style="max-width: 300px;">
             </div>
         </div>
@@ -68,8 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <input type="password" id="password" name="password" class="form-control" required>
                         </div>
                         
-                     
-                        
+                        <!-- Add a role selection field -->
+                       
+
                         <button type="submit" class="btn-auth">Register</button>
                     </form>
                 </div>
