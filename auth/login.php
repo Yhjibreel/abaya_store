@@ -52,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="auth-container">
         <div class="auth-left">
             <div>
-                <h1>Welcome Back </h1>
-                <p>Login to manage your abaya store</p>
+                <h1>Welcome Back!</h1>
+                <p>Login to manage your abaya store.</p>
                 <img src="../assets/images/login-illustration.svg" alt="Login Illustration" style="max-width: 300px;">
             </div>
         </div>
