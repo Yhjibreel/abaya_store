@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['cart'][$product_id] = $quantity;
     }
 
-    header('Location: index.php');
+    header('Location: ex.php');
     exit();
 }
 ?>
