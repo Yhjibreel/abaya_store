@@ -1,3 +1,5 @@
+
+
 <div class="sidebar bg-dark text-white">
     <div class="sidebar-header p-3">
         <h3>Abaya Palace</h3>
