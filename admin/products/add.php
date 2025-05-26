@@ -1,4 +1,4 @@
-<?php
+ <?php
 include '../db_connect.php';
 include '../auth_check.php';
 include '../admin_check.php';

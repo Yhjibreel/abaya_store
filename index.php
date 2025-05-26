@@ -24,17 +24,13 @@ echo "Welcome, " . $_SESSION['username'];
 <header>
     <h1>Luxury Abayas</h1>
     
-    <!-- Cart Link -->
-    <a href="checkout.php" class="cart-link">
-        Cart (<?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?>)
-    </a>
-
+   
     
     <!-- Logout Link (Only if the user is logged in) -->
     <?php if (isset($_SESSION['username'])): ?>
-        <a href="../auth/logout.php" class="logout-link">Logout</a>
+        <a href="../authlogout.php" class="logout-link">Logout</a>
     <?php else: ?>
-        <a href="login.php" class="login-link">Login</a>
+        <a href="login.php" class="login-link">Loging</a>
     <?php endif; ?>
 </header>
 
@@ -57,8 +53,17 @@ echo "Welcome, " . $_SESSION['username'];
         <?php endwhile; ?>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Abaya Shop. All rights reserved.</p>
-    </footer>
+  <footer style="background-color: #222; color: #fff; padding: 20px 0; text-align: center; font-size: 14px;">
+    <div style="max-width: 1200px; margin: auto;">
+        <p style="margin: 5px 0;">&copy; 2025 <strong>Abaya Shop</strong>. All rights reserved.</p>
+        <p style="margin: 5px 0;">
+            <a href="../index.php" style="color: #f0c040; text-decoration: none; margin: 0 10px;">Home</a> |
+            <a href="../about.php" style="color: #f0c040; text-decoration: none; margin: 0 10px;">About</a> |
+            <a href="../contact.php" style="color: #f0c040; text-decoration: none; margin: 0 10px;">Contact</a>
+        </p>
+        <p style="margin: 5px 0;">Crafted with 💛 by the Abaya Shop Team</p>
+    </div>
+</footer>
+
 </body>
 </html>

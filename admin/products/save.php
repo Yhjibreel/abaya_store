@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if image was uploaded
     if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
         $imageName = uniqid() . '_' . basename($_FILES['image']['name']);
-        $targetDir = __DIR__ . '/../../images/'; // Adjusted to the correct path
+        $targetDir = _DIR_ . '/../../images/'; // Adjusted to the correct path
         $targetPath = $targetDir . $imageName;
 
         if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
