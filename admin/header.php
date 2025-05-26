@@ -14,4 +14,4 @@ include 'admin_check.php';
 <body>
     <div class="d-flex">
         <?php include __DIR__ . '/sidebar.php'; ?>
-        <div class="main-content">
+        <div class="main-content"></div>
