@@ -23,8 +23,18 @@ echo "Welcome, " . $_SESSION['username'];
 <body>
 <header>
     <h1>Luxury Abayas</h1>
-    
-   
+    <?php
+// Yusuf Hassan: Display greeting based on current time of day
+$hour = date("H");
+if ($hour < 12) {
+    $greeting = "Good morning";
+} elseif ($hour < 18) {
+    $greeting = "Good afternoon";
+} else {
+    $greeting = "Good evening";
+}
+echo "<p style='color: #f0c040; font-weight: bold;'>$greeting, welcome to Abaya Store!</p>";
+?>
     
     <!-- Logout Link (Only if the user is logged in) -->
     <?php if (isset($_SESSION['username'])): ?>
